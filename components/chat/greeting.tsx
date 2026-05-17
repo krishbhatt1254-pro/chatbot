@@ -8,7 +8,7 @@ export const Greeting = () => {
         className="text-center font-semibold text-2xl tracking-tight text-foreground md:text-3xl"
         initial={{ opacity: 0, y: 10 }}
         transition={{ delay: 0.35, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      >
+        Welcome to my custom AI assistant hub
         What can I help with?
       </motion.div>
       <motion.div
@@ -16,7 +16,7 @@ export const Greeting = () => {
         className="mt-3 text-center text-muted-foreground/80 text-sm"
         initial={{ opacity: 0, y: 10 }}
         transition={{ delay: 0.5, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      >
+        Ask a question, run tasks, or explore ideas with your AI tools.
         Ask a question, write code, or explore ideas.
       </motion.div>
     </div>
