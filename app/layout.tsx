@@ -1,33 +1,31 @@
-import { motion } from "framer-motion";
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
+import '@/app/globals.css'
+import { Providers } from '@/components/providers'
+import { Header } from '@/components/header'
+import { Toaster } from '@/components/ui/sonner'
 
-export const Greeting = () => {
+export const metadata = {
+  title: 'Next.js AI Chatbot',
+  description: 'An AI-powered chatbot built with Next.js.'
+}
+
+export default async function RootLayout({
+  children
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <div className="flex flex-col items-center px-4" key="overview">
-      
-      {/* First Block: Main Welcome Header */}
-      <motion.div
-        animate={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: 10 }}
-        transition={{ delay: 0.35, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="text-center font-semibold text-2xl tracking-tight text-foreground md:text-3xl"
-      >
-        Welcome to my custom AI assistant hub
-        <br />
-        What can I help with?
-      </motion.div>
-
-      {/* Second Block: Subtext Description */}
-      <motion.div
-        animate={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: 10 }}
-        transition={{ delay: 0.5, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="mt-3 text-center text-muted-foreground/80 text-sm"
-      >
-        Ask a question, run tasks, or explore ideas with your AI tools.
-        <br />
-        Ask a question, write code, or explore ideas.
-      </motion.div>
-
-    </div>
-  );
-};
+    <html lang="en" suppressHydrationWarning>
+      <body className={`font-sans antialiased ${GeistSans.variable} ${GeistMono.variable}`}>
+        <Toaster position="top-center" />
+        <Providers attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex flex-col flex-1 bg-muted/50">{children}</main>
+          </div>
+        </Providers>
+      </body>
+    </html>
+  )
+}
